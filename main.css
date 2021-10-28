@@ -1,0 +1,22 @@
+:root {
+    --background-color: #fff1d0;
+    --black-color: #000000;
+    --primary-color: #000000;
+    --a-color: #FC6DAB;/* FC6DAB */
+    --b-color: #3FDE9F; /* 99EDCC */
+    --c-color: #539BF3; /* 9AC4F8 */
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: var(--background-color);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
