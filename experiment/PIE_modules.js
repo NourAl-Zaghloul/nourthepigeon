@@ -517,8 +517,7 @@ Tree.Templates.AgeForm = {
         style: {
             fontSize: '36pt'
         },
-        innerText: 'When were you born?',
-        
+        innerText: 'How old are you?'        
     },
     DOM_AgeBR: {
         tagName: "br",
