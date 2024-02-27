@@ -273,8 +273,8 @@ Tree.Templates.XAFCwithText = {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "space-evenly",
-            //height: "50%",
+            justifyContent: "space-around",
+            height: "33%",
             width: "100%"
         }
     },
@@ -285,9 +285,9 @@ Tree.Templates.XAFCwithText = {
         style: {
             backgroundColor: "transparent",
             padding: 0,
-            width: '360px',
-            height: '360px',
-            border: 'black solid'
+            width: '480px',
+            height: '480px',
+            border: '0px black solid'
         }
     },
     stimuliDOMs: { 
@@ -304,15 +304,15 @@ Tree.Templates.XAFCwithText = {
         tagName: 'canvas',
         id: 'canvasDOM',
         parentElement: 'main',
-        width: 1800,
-        height: 1080,
+        width: 1200,
+        height: 800,
         style: {
             position: 'absolute',
-            zIndex: '-12',
-            top: 60,
-            left: 60,
-            width: 1800,
-            height: 1080
+            zIndex: -12,
+            top: 0,
+            left: 0,
+            width: 1200,
+            height: 800
         }
     },
     Loop: 0,
@@ -387,6 +387,7 @@ Tree.Systems.create_XAFCwithText = function(Loc){
         Tree.DOM[`${Loc}_stimuliButton_${i}`].onclick = function(){Tree.Utilities.eventEmit("click", Loc, {stimuli: i})}
     }
 
+
     // activate/deactivate Event Listeners
     Tree.Utilities.eventlistenerRemove("create", Loc, Loc);
     Tree.Utilities.eventlistenerActivate("activate", Loc, Loc);
@@ -395,10 +396,10 @@ Tree.Systems.create_XAFCwithText = function(Loc){
 Tree.Systems.activate_XAFCwithText = function(Loc){
     Tree.Utilities.containerHandler(Loc, "activate");
 
-    //Tree.Utilities.cssUpdate(Tree.DOM[`${Loc}_canvasDOM`],{top: 60, left: 60}) //! HACK
+    Tree.Utilities.cssUpdate(Tree.DOM[`${Loc}_canvasDOM`],{zIndex: 0}) //! HACK
     //! HACK
-    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[0],340,530,360,360)
-    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[1],1100,530,360,360)
+    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[0],120,360,360,360) //1200x800 screen | canvas
+    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[1],720,360,360,360)
     
     setTimeout(() => {
         // Set baseline for Timing
@@ -447,9 +448,11 @@ Tree.Systems.deactivate_XAFCwithText = function(Loc){
             }
         }
 
-            //! HACK
-            Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[0],340,530,360,360)
-            Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[1],1100,530,360,360)
+        //! HACK
+        Tree.Utilities.cssUpdate(Tree.DOM[`${Loc}_canvasDOM`],{zIndex: -12})
+        //! HACK
+        //Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[0],120,360,360,360) //1200x800 screen | canvas
+        //Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[1],720,360,360,360)
     }
 }
 Tree.Systems.destroy_XAFCwithText = function(Loc){
@@ -517,7 +520,7 @@ Tree.Templates.AgeForm = {
         style: {
             fontSize: '36pt'
         },
-        innerText: 'How old are you?'        
+        innerText: 'How old are you?'
     },
     DOM_AgeBR: {
         tagName: "br",
