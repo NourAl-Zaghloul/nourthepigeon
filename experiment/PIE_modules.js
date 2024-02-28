@@ -287,7 +287,7 @@ Tree.Templates.XAFCwithText = {
             padding: 0,
             width: '360px',
             height: '360px',
-            border: '4px black solid'
+            border: '0px black solid'
         }
     },
     stimuliDOMs: { 
@@ -398,8 +398,10 @@ Tree.Systems.activate_XAFCwithText = function(Loc){
 
     Tree.Utilities.cssUpdate(Tree.DOM[`${Loc}_canvasDOM`],{zIndex: 0}) //! HACK
     //! HACK
-    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[0],120,360,360,360) //1200x800 screen | canvas
-    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[1],720,360,360,360)
+    //Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[0],120,360,360,360) //1200x800 screen | canvas
+    //Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[1],720,360,360,360)
+    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[0],140,370,360,360) //1200x800 screen | canvas
+    Tree.DOM[`${Loc}_canvasDOM`].getContext('2d').drawImage(Data.Tree[Loc].Images[1],780,370,360,360)
     
     setTimeout(() => {
         // Set baseline for Timing
