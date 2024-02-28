@@ -378,7 +378,9 @@ Sapling = {
             deactivate_LoopLimit: 12,
             Children: [
                 { 
-                    Template: "Fixation"
+                    Template: "Fixation",
+                    waitTime: 1000,
+                    styleButton: "height: 24vh; width: 24vh; border-radius: 50%; background-color: red;"
                 },
                 {
                     Template: "XAFCwithText",
@@ -399,7 +401,5 @@ Sapling = {
         }
     ]
 };
-
-screen.orientation.lock('landscape');
 
 Tree.Procedures.begin(Sapling);

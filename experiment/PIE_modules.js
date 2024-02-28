@@ -255,7 +255,7 @@ Tree.Templates.XAFCwithText = {
             fontSize: "36pt",
             padding: "5%",
             overflowY: "clip",
-            height: "33%",
+            height: "36%",
             width: "90%",
             textAlign: "center"
         }
@@ -285,9 +285,9 @@ Tree.Templates.XAFCwithText = {
         style: {
             backgroundColor: "transparent",
             padding: 0,
-            width: '480px',
-            height: '480px',
-            border: '0px black solid'
+            width: '360px',
+            height: '360px',
+            border: '4px black solid'
         }
     },
     stimuliDOMs: { 
@@ -644,8 +644,10 @@ Tree.Systems.click_AgeForm = function(Loc, argJSON){
     if(Tree.DOM[`${Loc}_AgeInput`].value != ""){
         Data.Storage.Age = Tree.DOM[`${Loc}_AgeInput`].value;
 
-        document.getElementById("main").requestFullscreen()
-    
+        document.getElementById("main").requestFullscreen();
+
+        screen.orientation.lock("landscape");
+        
         Tree.Utilities.eventEmit("deactivate", Loc);
         
         Data.Tree[Loc].Loop++;

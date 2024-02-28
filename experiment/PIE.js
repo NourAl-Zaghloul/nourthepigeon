@@ -249,6 +249,7 @@ Tree = {
             styleButton: "height: 30vh; width: 30vh; border-radius: 50%; background-color: red;",
             altTextButton: "start button",
             Loop: 0,
+            waitTime: 0,
             EventListeners: [
                 {type: "create",
                  on: "__SELF__",
@@ -821,17 +822,27 @@ Tree = {
             Tree.Utilities.eventlistenerActivate(`click`, Loc, Loc);
         },
         deactivate_Fixation: function(Loc){
-            Tree.DOM[Loc].style.display = "none";
-            Data.Tree[Loc].Loop++;
-            Tree.DOM.main.removeChild(Tree.DOM[Loc]);
-
             // (de)activate eventListeners
             Tree.Utilities.eventlistenerActivate("activate", Loc, Loc);
             Tree.Utilities.eventlistenerDeactivate("deactivate", Loc, Loc);
             Tree.Utilities.eventlistenerDeactivate(`click`, Loc, Loc);
 
             // emit child deactivated event for parent
-            Tree.Utilities.eventEmit("childDeactivated", Data.Tree[Loc].parentLoc, {Child: Loc});
+            if(Data.Tree[Loc].waitTime > 0){
+                setTimeout(() => {
+                    Tree.Utilities.eventEmit("childDeactivated", Data.Tree[Loc].parentLoc, {Child: Loc});
+
+                    Tree.DOM[Loc].style.display = "none";
+                    Data.Tree[Loc].Loop++;
+                    Tree.DOM.main.removeChild(Tree.DOM[Loc]);
+                }, Data.Tree[Loc].waitTime)
+            } else {
+                Tree.Utilities.eventEmit("childDeactivated", Data.Tree[Loc].parentLoc, {Child: Loc});
+                
+                Tree.DOM[Loc].style.display = "none";
+                Data.Tree[Loc].Loop++;
+                Tree.DOM.main.removeChild(Tree.DOM[Loc]);
+            }
 
             // check to see if it's completely done(if so, trigger destroy)
             // if(Data.Tree[Loc].Loop >= Data.Tree[Loc].Loops.length){
