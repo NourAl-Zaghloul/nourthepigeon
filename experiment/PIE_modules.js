@@ -459,6 +459,7 @@ Tree.Systems.deactivate_XAFCwithText = function(Loc){
 }
 Tree.Systems.destroy_XAFCwithText = function(Loc){
     Tree.Utilities.containerHandler(Loc, "destroy");
+    document.getElementById(`${Loc}_canvasDOM`).remove();
 
     // remove eventListeners
     Tree.Utilities.eventlistenerRemove("activate", Loc, Loc);
