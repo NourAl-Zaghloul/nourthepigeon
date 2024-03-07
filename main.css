@@ -1,10 +1,36 @@
 :root {
-    --background-color: #fff1d0;
-    --black-color: #000000;
-    --primary-color: #000000;
-    --a-color: #FC6DAB;/* FC6DAB */
-    --b-color: #3FDE9F; /* 99EDCC */
-    --c-color: #539BF3; /* 9AC4F8 */
+	--reference-light: hsl(120 100 97);
+	--reference-dark: hsl(120 100 3);
+	--main-color: hsl(30 100 50);
+	--main-color-light: hsl(30 100 83.5);
+	--main-color-dark: hsl(30 100 16.5);
+	--accent-color: hsl(210 100 50);
+	--accent-color-light: hsl(210 100 83.5);
+	--accent-color-dark: hsl(210 100 16.5);
+}
+
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('PigeonFont/AtkinsonHyperlegible-Regular.ttf') format('tff');
+}
+  
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('PigeonFont/AtkinsonHyperlegible-Bold.ttf') format('tff');
+	font-weight: 700;
+}
+  
+@font-face {
+	font-family: 'Atkinson Hyperlegible';
+	src: url('PigeonFont/AtkinsonHyperlegible-Italic.ttf') format('tff');
+	font-style: italic;
+}
+  
+@font-face {
+    font-family: 'Atkinson Hyperlegible';
+    src: url('PigeonFont/AtkinsonHyperlegible-BoldItalic.ttf') format('tff');
+    font-weight: 700;
+    font-style: italic;
 }
 
 html {
@@ -15,7 +41,7 @@ html {
 }
 
 body {
-    background-color: var(--background-color);
+    background-color: var(--main-color-light);
     overflow: auto;
     display: flex;
     flex-direction: column;
