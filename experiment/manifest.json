@@ -1,0 +1,8 @@
+{
+    "name": "Lilly Development Experiment",
+    "short_name": "Lilly",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "orientation": "landscape",
+    "theme_color": "green"
+}
