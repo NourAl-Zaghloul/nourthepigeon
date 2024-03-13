@@ -379,7 +379,7 @@ Sapling = {
             Children: [
                 { 
                     Template: "Fixation",
-                    waitTime: 1500,
+                    waitTime: 0,
                     styleButton: "height: 24vh; width: 24vh; border-radius: 50%; background-color: red;"
                 },
                 {

@@ -370,10 +370,11 @@ Tree.Systems.create_XAFCwithText = function(Loc){
 
         if(i < Data.Tree[Loc].trials[Data.Tree[Loc].Loop].Stimuli.length){
             //Data.Tree[Loc].stimuliDOMs.src = Data.Tree[Loc].trials[Data.Tree[Loc].Loop].Stimuli[i];
+            
             let imagestimuli = new Image(360,360) //! HACK
             imagestimuli.src = Data.Tree[Loc].trials[Data.Tree[Loc].Loop].Stimuli[i]; //! HACK
             Data.Tree[Loc].Images.push(imagestimuli); //! HACK
-
+            
         } else {
             //Data.Tree[Loc].stimuliDOMs.src = "";
 
@@ -387,6 +388,14 @@ Tree.Systems.create_XAFCwithText = function(Loc){
         Tree.DOM[`${Loc}_stimuliButton_${i}`].onclick = function(){Tree.Utilities.eventEmit("click", Loc, {stimuli: i})}
     }
 
+    
+    let totalStimuli = Data.Tree[Loc].trials.length * 2; //! HACK
+    for(let i = 0; i < totalStimuli; i++){
+        let imagestimuli = new Image(360,360) //! HACK
+        imagestimuli.src = Data.Tree[Loc].trials[Math.floor(i/2)].Stimuli[i % 2]; //! HACK
+        //Data.Tree[Loc].Images.push(imagestimuli); //! HACK
+    }
+    
 
     // activate/deactivate Event Listeners
     Tree.Utilities.eventlistenerRemove("create", Loc, Loc);
@@ -440,9 +449,12 @@ Tree.Systems.deactivate_XAFCwithText = function(Loc){
             if(i < Data.Tree[Loc].trials[Data.Tree[Loc].Loop].Stimuli.length){
                 //Tree.DOM[`${Loc}_stimuliDOM_${i}`].style.display = '';
                 //Tree.DOM[`${Loc}_stimuliDOM_${i}`].src = Data.Tree[Loc].trials[Data.Tree[Loc].Loop].Stimuli[i];
+                
                 let imagestimuli = new Image(360,360) //! HACK
                 imagestimuli.src = Data.Tree[Loc].trials[Data.Tree[Loc].Loop].Stimuli[i]; //! HACK
                 Data.Tree[Loc].Images.push(imagestimuli); //! HACK
+                
+                //Data.Tree[Loc].Images.shift() //! HACK
 
                 Tree.DOM[`${Loc}_stimuliButton_${i}`].style.display = '';
             } else {
